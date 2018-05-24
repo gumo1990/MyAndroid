@@ -1,6 +1,8 @@
 package com.example.administrator.myandroid.activity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
@@ -38,6 +40,7 @@ public class MainActivity extends BaseActivity {
     Toolbar toolbar;
     DrawerLayout dl_main;
     TextView tv_main_left;
+    FloatingActionButton fb_main;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -61,6 +64,7 @@ public class MainActivity extends BaseActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         dl_main = (DrawerLayout) findViewById(R.id.dl_main);
         tv_main_left = (TextView) findViewById(R.id.tv_main_left);
+        fb_main = (FloatingActionButton) findViewById(R.id.fb_main);
 
         linearLayoutManager = new LinearLayoutManager(this);
         adapter = new MainAdapter(mContext, mList);
@@ -99,7 +103,7 @@ public class MainActivity extends BaseActivity {
                         dl_main.openDrawer(Gravity.LEFT);
                         break;
                     case R.id.action_share:
-                        Toast.makeText(mContext, "action_share", Toast.LENGTH_SHORT).show();
+                       startActivity(new Intent(mContext, SecondActivity.class));
                         break;
                     case R.id.aciton_search:
                         Toast.makeText(mContext, "aciton_search", Toast.LENGTH_SHORT).show();
@@ -186,6 +190,12 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 dl_main.closeDrawer(Gravity.LEFT);
+            }
+        });
+        fb_main.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext, "buttonFloatting", Toast.LENGTH_SHORT).show();
             }
         });
     }
