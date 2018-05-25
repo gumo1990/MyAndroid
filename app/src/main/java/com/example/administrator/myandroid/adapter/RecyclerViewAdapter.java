@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.administrator.myandroid.R;
@@ -30,6 +31,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(MyFragmentHolder holder, final int position) {
+        holder.tv.setText("Fragmentitem "+ (position + 1)+ "条数据");
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,14 +42,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public int getItemCount() {
-        return 10;
+        return 50;
     }
 
     class MyFragmentHolder extends RecyclerView.ViewHolder {
         View view;
-
+        TextView tv ;
         public MyFragmentHolder(View itemView) {
             super(itemView);
+            tv = itemView.findViewById(R.id.tv_second_item);
             view = itemView;
         }
     }

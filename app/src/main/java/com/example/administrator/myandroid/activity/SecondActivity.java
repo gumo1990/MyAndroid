@@ -1,12 +1,17 @@
 package com.example.administrator.myandroid.activity;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import com.example.administrator.myandroid.BaseActivity;
 import com.example.administrator.myandroid.R;
+import com.example.administrator.myandroid.adapter.FragmentAdapter;
+import com.example.administrator.myandroid.fragment.ListFragment;
 
 import java.util.ArrayList;
 
@@ -16,10 +21,11 @@ import java.util.ArrayList;
 
 public class SecondActivity extends BaseActivity {
 
-    ArrayList<String> mList = new ArrayList<>();
+    ArrayList<Fragment> fragments = new ArrayList<>();
+    ArrayList<String> titles = new ArrayList<>();
 
     private DrawerLayout mDrawlayout;
-    private ViewPager viewPager;
+    private ViewPager mViewPager;
     private TabLayout mTablayout;
     private Toolbar mToolbar;
 
@@ -31,7 +37,7 @@ public class SecondActivity extends BaseActivity {
     @Override
     public void initView() {
         mToolbar = (Toolbar) findViewById(R.id.tb_second);
-        viewPager = (ViewPager) findViewById(R.id.vp_second);
+        mViewPager = (ViewPager) findViewById(R.id.vp_second);
         mTablayout = (TabLayout) findViewById(R.id.tabs_second);
 
     }
@@ -39,15 +45,42 @@ public class SecondActivity extends BaseActivity {
     @Override
     public void initData() {
         setSupportActionBar(mToolbar);
-        for(int i=1; i<12;i++){
-            mList.add("新闻" +i);
-            mTablayout.addTab(mTablayout.newTab().setText(mList.get(i)));
+        titles.add("精选");
+        titles.add("体育");
+        titles.add("巴萨");
+        titles.add("购物");
+        titles.add("明星");
+        titles.add("视频");
+        titles.add("健康");
+        titles.add("励志");
+        titles.add("图文");
+        titles.add("本地");
+        titles.add("动漫");
+        titles.add("搞笑");
+        titles.add("精选");
+        for (int i = 0; i < titles.size(); i++) {
+            mTablayout.addTab(mTablayout.newTab().setText(titles.get(i)));
+            fragments.add(new ListFragment());
         }
+
+        FragmentAdapter mFragmentAdapter = new FragmentAdapter(getSupportFragmentManager(), fragments,
+                titles);
+        //给ViewPager设置适配器
+        mViewPager.setAdapter(mFragmentAdapter);
+        //将TabLayout和ViewPager关联起来
+        mTablayout.setupWithViewPager(mViewPager);
+        //给TabLayout设置适配器
+        mTablayout.setTabsFromPagerAdapter(mFragmentAdapter);
 
     }
 
     @Override
     public void initListener() {
-
+        mToolbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(mContext, ThreeActivity.class));
+            }
+        });
     }
 }
