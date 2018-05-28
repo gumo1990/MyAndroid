@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 
 /**
  * Created by whq on 2018/5/24.
@@ -12,12 +11,16 @@ import android.view.View;
 
 public abstract class BaseActivity extends AppCompatActivity {
     public abstract int getContentView();
+
     public abstract void initView();
+
     public abstract void initData();
+
     public abstract void initListener();
 
 
     public Context mContext;
+
     public BaseActivity() {
         mContext = this;
     }
