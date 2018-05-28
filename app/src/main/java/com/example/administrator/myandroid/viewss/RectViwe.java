@@ -13,6 +13,7 @@ import com.example.administrator.myandroid.utils.ComUtils;
 
 /**
  * Created by whq on 2018/5/28.
+ * 继承View不仅要重写onDraw方法，还要重写onMeasure方法
  * 自定义View需要考虑warp_content,padding属性设置，为了方便配置自己的自定义View，
  * 还会对外提供自定义的属性，如果要改变触控的逻辑，还要重写onTouchEvent等触控方法。
  *

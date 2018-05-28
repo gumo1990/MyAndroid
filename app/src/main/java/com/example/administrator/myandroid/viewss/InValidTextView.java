@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 /**
  * Created by whq on 2018/5/28.
- * 自定义TextView
+ * 自定义TextView，继承系统控件，需要重写OnDraw方法
  */
 
 public class InValidTextView extends TextView {

@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:clipChildren="false">
 
     <com.example.administrator.myandroid.viewss.TitleBar xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/title_bar"
@@ -12,16 +13,11 @@
         app:tv_bar_title="自定义组合控件"
         app:tv_bar_title_color="@android:color/background_light" />
 
-    <com.example.administrator.myandroid.viewss.CustomView
-        android:id="@+id/ct_second"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_margin="50dp"
-        android:background="#f89" />
-
     <com.example.administrator.myandroid.viewss.InValidTextView
         android:layout_width="200dp"
         android:layout_height="100dp"
+        android:clipChildren="false"
+        android:layout_marginTop="10dp"
         android:layout_gravity="center_horizontal"
         android:background="@android:color/holo_blue_light"
         android:gravity="center"
@@ -37,8 +33,16 @@
         android:paddingBottom="22dp"
         android:paddingLeft="15dp"
         android:paddingRight="35dp"
+        android:clipChildren="false"
         android:paddingTop="10dp"
         app:rect_color="@android:color/holo_green_light" />
+
+    <com.example.administrator.myandroid.viewss.CustomView
+        android:id="@+id/ct_second"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="50dp"
+        android:background="#f89" />
 
 
 </LinearLayout>

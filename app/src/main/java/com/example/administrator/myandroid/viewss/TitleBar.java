@@ -16,6 +16,7 @@ import com.example.administrator.myandroid.R;
 /**
  * Created by whq on 2018/5/28.
  * 自定义组合控件，一个titlebar，左右图片，中间标题
+ * 不需要onDraw和onMeasure方法，只要配置好属性即可
  */
 
 public class TitleBar extends RelativeLayout {

@@ -31,10 +31,10 @@ public class ThreeActivity extends BaseActivity {
 
     @Override
     public void initData() {
-        //这种方式如果是button点击并没有反应，因为对于系统来说button并没有改变位置，
-        // 只有点击原来位置，才会触发点击事件，所以Android 3.0后使用属性动画，不仅可以执行动画，还可以改变view的位置参数
-     //   ct_second.setAnimation(AnimationUtils.loadAnimation(mContext, R.anim.translate));
-        ObjectAnimator.ofFloat(ct_second, "translationX", 0, 300).setDuration(1000).start();
+       /* 这种方式如果是button点击并没有反应，因为对于系统来说button并没有改变位置，
+         只有点击原来位置，才会触发点击事件，所以Android 3.0后使用属性动画，不仅可以执行动画，还可以改变view的位置参数
+        ct_second.setAnimation(AnimationUtils.loadAnimation(mContext, R.anim.translate));*/
+    //    ObjectAnimator.ofFloat(ct_second, "translationX", 0, 300).setDuration(1000).start();//使用属性动画
         title_bar.setTitle("二次定义标题名称");
     }
 
@@ -43,12 +43,14 @@ public class ThreeActivity extends BaseActivity {
         title_bar.setLeftTitleListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+             //   finish();
+                ct_second.smoothScrollTo(0, 0);
             }
         });
         title_bar.setRightTitleListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ct_second.smoothScrollTo(-400, 0);
                 ComUtils.toast(mContext, "右侧图片点击");
             }
         });
