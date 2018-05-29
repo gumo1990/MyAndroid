@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.example.administrator.myandroid.viewss.TitleBar xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/title_four_bar"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        app:title_bar_bg="@android:color/holo_green_light"
+        app:tv_bar_title="自定义组合控件"
+        app:tv_bar_title_color="@android:color/background_light" />
+
+    <Button
+        android:id="@+id/bt_four"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="发布" />
+</LinearLayout>
