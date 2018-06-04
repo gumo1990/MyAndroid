@@ -1,7 +1,14 @@
 package com.example.administrator.myandroid.activity;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
@@ -9,11 +16,13 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RemoteViews;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,6 +30,8 @@ import android.widget.Toast;
 import com.example.administrator.myandroid.BaseActivity;
 import com.example.administrator.myandroid.R;
 import com.example.administrator.myandroid.adapter.MainAdapter;
+import com.example.administrator.myandroid.viewss.DividerItemDecoration;
+import com.example.administrator.myandroid.viewss.Singletion;
 
 import java.util.ArrayList;
 
@@ -69,14 +80,15 @@ public class MainActivity extends BaseActivity {
         linearLayoutManager = new LinearLayoutManager(this);
         adapter = new MainAdapter(mContext, mList);
 
-
     }
 
     @Override
     public void initData() {
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rv_main.setLayoutManager(linearLayoutManager);
+     //   rv_main.setLayoutManager(new StaggeredGridLayoutManager(4,StaggeredGridLayoutManager.VERTICAL));
         rv_main.setItemAnimator(new DefaultItemAnimator());
+        rv_main.addItemDecoration(new DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL_LIST));
         rv_main.setAdapter(adapter);
         for (int i = 1; i < 50; i++) {
             mList.add(i + "");
@@ -199,6 +211,5 @@ public class MainActivity extends BaseActivity {
             }
         });
     }
-
 
 }

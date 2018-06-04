@@ -7,6 +7,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.example.administrator.myandroid.BaseActivity;
 import com.example.administrator.myandroid.R;
@@ -28,6 +29,7 @@ public class SecondActivity extends BaseActivity {
     private ViewPager mViewPager;
     private TabLayout mTablayout;
     private Toolbar mToolbar;
+    ImageView iv_second_bartitile;
 
     @Override
     public int getContentView() {
@@ -39,6 +41,7 @@ public class SecondActivity extends BaseActivity {
         mToolbar = (Toolbar) findViewById(R.id.tb_second);
         mViewPager = (ViewPager) findViewById(R.id.vp_second);
         mTablayout = (TabLayout) findViewById(R.id.tabs_second);
+        iv_second_bartitile = (ImageView) findViewById(R.id.iv_second_bartitile);
 
     }
 
@@ -77,6 +80,12 @@ public class SecondActivity extends BaseActivity {
     @Override
     public void initListener() {
         mToolbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            //    startActivity(new Intent(mContext, ThreeActivity.class));
+            }
+        });
+        iv_second_bartitile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(mContext, ThreeActivity.class));

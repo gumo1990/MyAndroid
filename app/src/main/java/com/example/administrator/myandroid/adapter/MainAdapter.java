@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.administrator.myandroid.R;
@@ -36,13 +37,21 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
     @Override
     public void onBindViewHolder(final MainViewHolder holder, int position) {
         holder.tv_main_item.setText(mList.get(position));
+
         holder.tv_main_item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+               boolean isChick = false;
                 onitemClick.onItemClick(holder.tv_main_item, holder.getLayoutPosition());
+                if( holder.iv_main_item.getVisibility() == View.GONE){
+                    holder.iv_main_item.setVisibility(View.VISIBLE);
+                }else if( holder.iv_main_item.getVisibility() == View.VISIBLE){
+                    holder.iv_main_item.setVisibility(View.GONE);
+                }
+
             }
         });
-        holder.tv_main_item.setOnLongClickListener(new View.OnLongClickListener() {
+        holder.iv_main_item.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
                 onitemClick.onItemLongClick(holder.tv_main_item, holder.getLayoutPosition());
@@ -63,9 +72,11 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
     class MainViewHolder extends RecyclerView.ViewHolder{
 
         TextView tv_main_item;
+        ImageView iv_main_item;
         public MainViewHolder(View itemView) {
             super(itemView);
             tv_main_item = itemView.findViewById(R.id.tv_main_item);
+            iv_main_item = itemView.findViewById(R.id.iv_main_item);
 
         }
     }
